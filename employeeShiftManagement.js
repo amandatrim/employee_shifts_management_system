@@ -76,4 +76,20 @@ function calculateTotalHours(name) {
       return 0;
     }
   }
+
+/*
+  Task 5
+  The fifth task of this assignment is to create a function that logs the list available employees that do not have a shift 
+  that day. it accepts 'day' as a parameter, then it goes through each employees shift array to find out if they have a shift for that day.
+  It employs a for each loop to carry out the sequence
+*/
+
+function listAvailableEmployees(day) {
+    employees.forEach(employee => {
+      const hasShift = employee.shifts.some(shift => shift.day === day);
+      if (!hasShift) {
+        console.log(`${employee.name} is available and does not have a shift on ${day}`);
+      }
+    });
+  }
   
