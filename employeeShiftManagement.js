@@ -26,4 +26,30 @@ function displayEmployeeShifts(employee) {
       console.log(`${shift.day}: ${shift.hours} hours`);
     });
   }
+
+/*
+  Task 3
+  The third task of this assignment is to create a function that assigns shifts to various employeees.
+  It accepts the employee's name, day of the shift and numbers of hours as parameters, it then adds it to the shifts array of that employee
+*/
+
+function assignShift(name, day, hours) {
+    // This makes use of the javascript find method to determine the employee we are looking for, using their names
+    const employee = employees.find(e => e.name === name);
+    if (employee != undefined) {
+
+    // This line checks if the employee already has a shift that day. If they do, then a new shift cannot be assigned. 
+    //If they don't then a new shift is assigned to them
+    
+      const existingShift = employee.shifts.find(shift => shift.day === day);
+      if (existingShift ) {
+        console.log(`Error: ${name} is already working on ${day}`);
+      } else {
+        employee.shifts.push({ day, hours });
+        console.log(`Assigned ${hours} hours on ${day} to ${name}`);
+      }
+    } else {
+      console.log(`Employee ${name} not found`);
+    }
+  }
   
