@@ -40,7 +40,7 @@ function assignShift(name, day, hours) {
 
     // This line checks if the employee already has a shift that day. If they do, then a new shift cannot be assigned. 
     //If they don't then a new shift is assigned to them
-    
+
       const existingShift = employee.shifts.find(shift => shift.day === day);
       if (existingShift ) {
         console.log(`Error: ${name} is already working on ${day}`);
@@ -50,6 +50,30 @@ function assignShift(name, day, hours) {
       }
     } else {
       console.log(`Employee ${name} not found`);
+    }
+  }
+
+/*
+  Task 4
+  The fourth task of this assignment is to create a function that calculate the total number of hours worked by an employee.
+  It makes use of the javascript reduce method to sum up the total hours worked by the employee that weeek.
+  The function accepts the employee's name as parameter
+*/
+
+function calculateTotalHours(name) {
+
+    // This line of code looks for the employee in the employee array using their names. If an employee with the passed name is not found, an error message is printed
+    const employee = employees.find(e => e.name === name);
+    if (employee != undefined) {
+      // sums up the employees hours using the reduce method. 
+      const totalHours = employee.shifts.reduce((sum, shift) => sum + shift.hours, 0);
+      console.log(`${name} worked a total of ${totalHours} hours this week`);
+
+      // Returns the total number of hours worked
+      return totalHours;
+    } else {
+      console.log(`Employee ${name} not found`);
+      return 0;
     }
   }
   
